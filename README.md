@@ -55,6 +55,19 @@ pip install .
 
 Note: Installing from source (provided `mamba_install`) can help prevent package issues and ensure compatibility between different dependencies. It is recommended to follow these steps carefully to avoid potential conflicts.
 
+### Step 4 (By Arno@Riverside) - Libcuda.so
+Run the following:\
+ `ll /lib/x86_64-linux-gnu|grep libcuda`
+
+If you do not see a file `libcuda.so`, you will need to manually create a simlink to `libcuda.so.1`. If this file does not exist either, then there might be a missing cuda installation.\
+Create the simlink with:\
+`cd /lib/x86_64-linux-gnu && sudo ln -s libcuda.so.1 libcuda.so`
+
+Then you will need python/C libraries. Run the following:\
+`sudo apt-get install python3-dev`\
+You might need to specify the exact python version you are running.
+
+
 ## Training the Model
 ### Step 1: Prepare Dataset JSON
 
